@@ -115,6 +115,14 @@
       }
     }
 
+    function getPlaceTypeValue() {
+            var x = $('#type').val();
+            var z = $('#options');
+            var val = $(z).find('option[value="' + x + '"]');
+            var endval = val.attr('id');
+            alert(endval);
+        }
+
 
     function findPlaces(searchIndex) {
        var type = document.getElementById('type').value;
@@ -130,12 +138,12 @@
        service.radarSearch(request, function (results, status) {
          if (status == google.maps.places.PlacesServiceStatus.OK) {
            // alert(results.length);
-           document.getElementById('side_bar').innerHTML += "bounds["+searchIndex+"] returns "+results.length+" results<br>"
+
            for (var i = 0, result; result = results[i]; i++) {
              var marker = createMarker(result);
            }
          } else {
-           document.getElementById('side_bar').innerHTML += "bounds["+searchIndex+"] returns 0 results<br>&nbsp;status="+status+"<br>";
+
          }
          if (status != google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
             searchIndex++;
@@ -197,8 +205,7 @@
         });
         gmarkers.push(marker);
         if (!place.name) place.name = "result "+gmarkers.length;
-        var side_bar_html = "<a href='javascript:google.maps.event.trigger(gmarkers["+parseInt(gmarkers.length-1)+"],\"click\");'>"+place.name+"</a><br>";
-        document.getElementById('side_bar').innerHTML += side_bar_html;
+
     }
     google.maps.event.addDomListener(window, "load", initialize);
     </script>
@@ -230,15 +237,27 @@
          <label for="from">Start Location</label>
          <input type="text" id="to" value="Brighton"/>
          <label for="to">End Location</label>
-         <!-- Drop Down  <input type="text" id="type" value="" />!-->
+         <!-- Drop Down <input id="type" list="options" /> !-->
          <!-- Dropdown Trigger -->
          <div class="input-field col s12">
-            <select id="type">
+            <select id="options">
               <option value="" disabled selected>Please Select</option>
               <option value="amusement_park">Amusement Park</option>
+              <option value="aquarium">Aquarium</option>
+              <option value="art_gallery">Art Gallery</option>
+              <option value="atm">ATM's</option>
+              <option value="bakery">Bakery</option>
+              <option value="bank">Bank</option>
+              <option value="book_store">Book Store</option>
+              <option value="bowling_alley">Bowling Alley</option>
+              <option value="cafe">Cafe</option>
+              <option value="campground">Campground</option>
+              <option value="car_repair">Car Repair</option>
               <option value="zoo">Zoo</option>
               <option value="grocery_or_supermarket">Supermarket</option>
-            </select>
+              <option value="grocery_or_supermarket">Supermarket</option>
+
+          </select>
           </div>
           <label for="type">Place Type</label>
 
@@ -255,6 +274,5 @@
 
 
 <div id="side_bar"></div>
-test
 </div>
 </body>
