@@ -1,1 +1,56 @@
 /* CSS declarations go here */
+body {
+  background-color: #EBEBEB;
+}
+nav {
+    height: 10vh;
+    line-height: 10vh;
+}
+.navbar-fixed {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+}
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+
+    line-height: 10vh;
+}
+
+nav .button-collapse i {
+
+    line-height: 10vh;
+}
+
+nav .brand-logo {
+    font-size: 1.6rem;
+}
+.fixed-action-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        line-height: 10vh;
+    }
+    .fixed-action-btn {
+      bottom: 24px;
+      right: 24px;
+    }
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial;
+}
+
+.map-wrapper {
+  height: 90vh;
+  display: block;
+}
+#map {
+  height: 100%;
+}
